@@ -2,9 +2,11 @@ const express = require('express');
 var app = express();
 const fs = require("fs");
 
-app.get('/read', (req, res )=> {
+app.get('/read/:project', (req, res )=> {
     res.header("Content-Type", 'application/json');
-    fs.readFile('./config.json', "utf8", (err, jsonString) => {
+    project = req.params["project"];
+    dir = project + "/config.json";
+    fs.readFile(dir, "utf8", (err, jsonString) => {
         const config = JSON.parse(jsonString);
 
         res.json({
@@ -13,8 +15,9 @@ app.get('/read', (req, res )=> {
       });
 })
 
-app.get('/write/:firstarg/:secondarg/:newValue', (req, res) => {
+app.get('/write/:project/:firstarg/:secondarg/:newValue', (req, res) => {
 
+    project = req.params["project"];
     firstarg = req.params["firstarg"];
     secondarg = req.params["secondarg"];
     newValue = req.params["newValue"];
@@ -23,7 +26,9 @@ app.get('/write/:firstarg/:secondarg/:newValue', (req, res) => {
     firstarg == "0" ? firstarg = `` : firstarg = `["${firstarg}"]`; 
     secondarg == "0" ? secondarg = `` : secondarg = `["${secondarg}"]`; 
 
-    fs.readFile('./config.json', "utf8", (err, jsonString) => {
+    dir = project + "/config.json";
+
+    fs.readFile(dir, "utf8", (err, jsonString) => {
         const config = JSON.parse(jsonString);
 
         oldValue = eval(`config${firstarg}${secondarg}`)
@@ -38,8 +43,14 @@ app.get('/write/:firstarg/:secondarg/:newValue', (req, res) => {
       
         const jsonStringifed = JSON.stringify(config)
 
-        fs.writeFile('./config.json', jsonStringifed, err => {})
+        fs.writeFile(dir, jsonStringifed, err => {})
       });   
+
+})
+
+app.get('/pm2/status/:firstarg/', (req, res) => {
+
+  firstarg = req.params["firstarg"];  
 
 })
 

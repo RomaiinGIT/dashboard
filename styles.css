@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
+/* width */
+::-webkit-scrollbar {
+    display: none;
+}
 body{
 	font-family: Poppins;
     background: -webkit-linear-gradient(90deg, #1d3844,#2e485f,#1d3844);
@@ -8,8 +12,13 @@ body{
 }
 
 .container{
-	margin-right: 60px;
-	margin-left: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.containerin{
+	margin-right: 40px;
+	margin-left: 40px;
 	padding-right: 20px;
 	padding-left: 20px;
 	padding-top: 2px;
@@ -20,7 +29,7 @@ body{
 	border-radius: 20px;
 	overflow: auto;
     height: 97vh;
-    width: 50vh;
+    width: 70vh;
 }
 .titleh{
     color: white;
@@ -61,6 +70,25 @@ form{
     padding: 12px;
     cursor: pointer;
 }
+.btng{
+    font-family: Poppins;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.233);
+    border: 0px;
+    font-size: 15px;
+    border-right: 1px solid  rgba(0, 0, 0, 0.233);
+    border-top: 1px solid  rgba(0, 0, 0, 0.233);
+    border-bottom: 1px solid  rgba(0, 0, 0, 0.233);
+    padding: 12px;
+    cursor: pointer;
+    margin-left: 15px;
+    margin-right: 15px;
+}
 input{
     font-family: Poppins;
     text-align: center;
@@ -74,4 +102,42 @@ input{
     font-size: 15px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
+}
+span.red{
+    background-color: rgb(209, 0, 0);
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 10px;
+}
+span.green{
+    background-color: rgb(24, 209, 0);
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 900px) {
+    body{
+        font-size: 12px;
+    }
+    .containerin{
+        margin-right: 3px;
+        margin-left: 3px;
+        margin-bottom: 5px;
+        padding-right: 20px;
+        padding-left: 20px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        box-shadow: 0 19px 51px 0 rgba(0,0,0,0.2), 0 14px 19px 0 rgba(0,0,0,0.07);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+        border:1px solid rgba(255, 255, 255, 1);
+        border-radius: 20px;
+        overflow: auto;
+        height: 40vh;
+        width: 70vh;
+    }
+    .container{
+        display: flex;
+        flex-wrap: wrap;
+    }
 }

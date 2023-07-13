@@ -1,0 +1,5 @@
+{
+    "require": {
+        "jalallinux/php-pm2": "^1.3"
+    }
+}
